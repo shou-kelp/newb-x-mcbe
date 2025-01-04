@@ -1,0 +1,127 @@
+name = "§lNewb §6Pineapple§r"
+version = [0, 4, 3]
+min_supported_mc_version = [1, 21, 20]
+description = '''
+§7Another newb variants to improve your minecraft visual with bright lighting, low saturation, soft shadow, foggy environment and immersive bloom.§r
+%v - §c%w§r
+''' # %w = patch warning, %v = version
+authors = ["firmw4", "devendrn"]
+url = "https://devendrn.github.io/newb-shader/"
+uuid = "8c6730f2-6d41-47e9-9b4a-778800035def" # Use https://www.uuidgenerator.net/version4
+materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "EndSky", "Clouds", "SunMoon", "Weather", "ItemInHandTextured", "ItemInHandColor", "ItemInHandColorGlint", "Stars"]
+
+[info] 
+copyright = '''
+Copyright © 2024 %a, and "Newb Shader" Contributors
+
+This compiled "Newb Shader" resource pack (source code: https://github.com/devendrn/newb-x-mcbe under MIT License) is licensed under CC BY-ND 4.0 (https://creativecommons.org/licenses/by-nd/4.0/). Redistribute only unmodified copies with proper attribution to "Newb Shader" and variant creators (if any). Do not distribute derivatives.
+
+You can compile the shader from source and distribute the result under your own terms (compatible with the MIT License).
+
+Contact (Discord Server): https://discord.gg/newb-community-844591537430069279
+''' # %a = authors
+credits = '''
+'''
+
+[custom]
+label = '''
+ - Highly recommended set brightness under 50
+ - Low render chunk for better fog experience
+ - Don't use experimental features and education mode (or some bugs will occur)
+ - Disable Vsync for better performance
+ - §7Use ESSL300 fixlag pack for Snapdragon-only to reduce sutter and lag spike issue§r
+ - §4some devices specifically experience a bug in cloud render cuttting§r
+
+§7Thanks for downloading and using this shader :)§r
+'''
+input = '''
+'''
+
+# subpacks are arranged in left to right order
+# right-most subpack is enabled by default
+
+
+[[subpack]]
+define = "GALAXY_STARS"
+materials = ["Sky", "EndSky"]
+description = '''
+Galaxy Stars
+'''
+
+[[subpack]]
+define = "TWINKLE_STARS"
+materials = ["Sky", "EndSky"]
+description = '''
+Twinkling Stars
+'''
+
+[[subpack]]
+define = "ALWAYS_REFLECTION"
+materials = ["RenderChunk"]
+description = '''
+Always Reflection
+'''
+
+[[subpack]]
+define = "ROUNDED_MULTILAYER"
+materials = ["RenderChunk", "Clouds"]
+description = '''
+Rounded Multilayer Cloud
+'''
+
+[[subpack]]
+define = "BOX_MULTILAYER"
+materials = ["RenderChunk", "Clouds"]
+description = '''
+Box Multilayer Cloud
+'''
+
+[[subpack]]
+define = "BOX_CLOUD"
+materials = ["RenderChunk", "Clouds"]
+description = '''
+Box Cloud
+'''
+
+[[subpack]]
+define = "SIMPLE_CLOUD"
+materials = ["RenderChunk", "Clouds"]
+description = '''
+Simple Cloud
+'''
+
+
+[[subpack]]
+define = "CHUNK_ANIM"
+materials = ["RenderChunk"]
+description = '''
+Chunk Anim
+'''
+
+[[subpack]]
+define = "NO_WAVE_NO_FOG"
+materials = ["RenderChunk"]
+description = '''
+No Fog No Wave
+'''
+
+[[subpack]]
+define = "NO_FOG"
+materials = ["RenderChunk"]
+description = '''
+No Fog
+'''
+
+[[subpack]]
+define = "NO_WAVE"
+materials = ["RenderChunk"]
+description = '''
+No Wave
+'''
+
+[[subpack]]
+define = "DEFAULT"
+materials = []
+description = '''
+Default
+'''
