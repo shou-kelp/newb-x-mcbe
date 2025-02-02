@@ -1,0 +1,13 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:client_biome": {
+    "description": {
+      "identifier": "deep_frozen_ocean"
+    },
+    "components": {
+      "minecraft:fog_appearance": {
+        "fog_identifier": "newb:fog_deep_frozen_ocean"
+      }
+    }
+  }
+}
