@@ -152,12 +152,12 @@
 #define NL_CLOUD2_LAYER2_VELOCITY       0.8     // 0.0 static ~ 4.0 very fast
 
 /* Aurora settings */
-#define NL_AURORA          2.4
+#define NL_AURORA          4.4
 #define NL_AURORA_VELOCITY 0.04    // 0.0 static ~ 0.3 very fast
 #define NL_AURORA_SCALE    0.08    // 0.002 large ~ 0.4 tiny
 #define NL_AURORA_WIDTH    0.12    // 0.04 thin line ~ 0.4 thick lines
 #define NL_AURORA_COL1     vec3(0.00, 0.60, 1.00)
-#define NL_AURORA_COL2     vec3(0.95, 0.12, 0.99)
+#define NL_AURORA_COL2     vec3(0.12, 0.90, 0.99)
 
 /* Shooting star */
 #define NL_SHOOTING_STAR        1.0     // [toggle] 0.2 dim ~ 1.0 bright
