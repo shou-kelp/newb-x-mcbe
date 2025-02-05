@@ -158,7 +158,11 @@ vec4 renderBlackhole(vec3 vdir, float t) {
   float r = 2.2;
   r += 0.0001*t;
   vec3 vr = vdir;
-  vr.xy = mat2(cos(r), -sin(r), sin(r), cos(r)) * vr.xy;
+  // manual calculation
+  float cx = cos(r);
+  float sx = sin(r);
+  vr.xy = vec2(cx * vr.x - sx * vr.y, sx * vr.x + cx * vr.y);
+  //vr.xy = mat2(cos(r), -sin(r), sin(r), cos(r)) * vr.xy;
   //r *= 2.0;
   //vr.yz = mat2(cos(r), -sin(r), sin(r), cos(r)) * vr.yz;
 
