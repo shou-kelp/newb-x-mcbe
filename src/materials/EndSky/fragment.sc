@@ -32,6 +32,9 @@ void main() {
     #ifdef NLC_END_TWINKLING_STARS
       color.rgb += NLC_END_TWINKLING_STARS*nlRenderStars(viewDir, color, env, v_posTime.w);
     #endif
+    vec4 bh = renderBlackhole(viewDir, v_posTime.w);
+    color *= bh.a;
+    color += bh.rgb;
 
     color = colorCorrection(color);
 
