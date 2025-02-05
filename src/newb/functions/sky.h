@@ -168,7 +168,7 @@ vec4 renderBlackhole(vec3 vdir, float t) {
 
   vec3 vd = vr-vec3(0.0, -1.0, 0.0);
   float nl = sin(15.0*vd.x + t)*sin(15.0*vd.y - t)*sin(15.0*vd.z + t);
-  float a = atan(vd.x, vd.z);
+  float a = atan2(vd.x, vd.z);
 
   float d = NL_BH_DIST*length(vd + 0.003*nl);
   //d *= 1.2 + 0.8*sin(0.2*t);
