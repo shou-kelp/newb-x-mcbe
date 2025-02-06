@@ -81,7 +81,7 @@ vec3 renderOverworldSky(nl_skycolor skycol, vec3 viewDir) {
   // gradient 2  h^8 mix h^2
   float gradient1 = hsq*hsq;
   gradient1 *= gradient1;
-  float gradient2 = 0.4*gradient1 + 0.6*hsq;
+  float gradient2 = 0.6*gradient1 + 0.4*hsq;
   gradient1 *= gradient1;
 
   vec3 sky = mix(skycol.horizon, skycol.horizonEdge, gradient1);
@@ -103,7 +103,7 @@ vec3 getSunBloom(float viewDirX, vec3 horizonEdgeCol, vec3 FOG_COLOR) {
   return NL_MORNING_SUN_COL*horizonEdgeCol*(sunBloom*factor*factor);
 }
 
-#if NLC_END_SKY == 2
+#if NL_END_SKY_TYPE == 2
 vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 viewDir, float t) {
   float a = atan2(viewDir.x, viewDir.z);
 
@@ -121,21 +121,20 @@ vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 viewDir, float t) {
   float g = h*h;
   g *= g;
 
-  vec3 mixHorizon = mix(horizonCol, vec3(0.5, 0.1, 1.0), 1.0);
-
-  vec3 sky = mix(zenithCol, mixHorizon, f*f);
+  vec3 mixHorizon = mix(horizonCol, vec3(0.4, 0.2, 1.0), 1.0);
+  vec3 sky = mix(zenithCol, mixHorizon, f*f*f);
   sky += (0.1*streaks + 2.0*g*g*g + h*h*h) * mixHorizon;
   sky += 0.2*streaks*horizonCol;
 
   return sky;
 }
-#elif NLC_END_SKY == 1
+#elif NL_END_SKY_TYPE == 1
 vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 v, float t){
   vec3 sky = vec3(0.0, 0.0, 0.0);
   v.y = smoothstep(-1.2,1.5,abs(v.y));
   v.x += 0.0*sin(10.0*v.y - t + v.z);
 
-  float a = atan(v.x, v.z);
+  float a = atan2(v.x, v.z);
 
   float s = sin(a*7.0 + 0.5*t);
   s = s*s;
@@ -324,7 +323,7 @@ vec3 nlRenderStars(vec3 viewDir, vec3 fogColor, nl_environment env, float time) 
   float f = 0.5 + 0.5*sin(randStar(viewDir*180.0 + vec3(time, time, time))*6.28 + time*0.5);
   s *= mix(0.4, 1.4, randStar(viewDir*100.0 + vec3(time, time, time)))*f;
   if (!env.end) {
-    float a = mix(1.0, NLC_STARS_DAY_VISIBILITY, min(dot(fogColor, vec3(0.5, 0.7, 0.5)), 1.0));
+    float a = mix(1.0, NL_STARS_DAY_VISIBILITY, min(dot(fogColor, vec3(0.5, 0.7, 0.5)), 1.0));
     s *= a*max(1.0 - 3.0*max(fogColor.b, fogColor.g), 0.0);
   }
 

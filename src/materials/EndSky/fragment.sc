@@ -23,18 +23,20 @@ void main() {
     vec3 color = renderEndSky(getEndHorizonCol(), getEndZenithCol(), viewDir, v_posTime.w);
     //color += 0.2 * diffuse.rgb;
 
-    #ifdef NL_SHOOTING_STAR
-      color.rgb += NL_SHOOTING_STAR*nlRenderShootingStar(viewDir, color, v_posTime.w);
+    #ifdef NL_END_SHOOTING_STAR
+      color.rgb += NL_END_SHOOTING_STAR*nlRenderShootingStar(viewDir, color, v_posTime.w);
     #endif
-    #ifdef NLC_END_GALAXY_STARS
-      color.rgb += NLC_END_GALAXY_STARS*nlRenderGalaxy(viewDir, color, env, v_posTime.w);
+    #ifdef NL_END_TWINKLING_STARS
+      color.rgb += NL_END_TWINKLING_STARS*nlRenderStars(viewDir, color, env, v_posTime.w);
     #endif
-    #ifdef NLC_END_TWINKLING_STARS
-      color.rgb += NLC_END_TWINKLING_STARS*nlRenderStars(viewDir, color, env, v_posTime.w);
+    #ifdef NL_END_GALAXY_STARS
+      color.rgb += NL_END_GALAXY_STARS*nlRenderGalaxy(viewDir, color, env, v_posTime.w);
     #endif
-    vec4 bh = renderBlackhole(viewDir, v_posTime.w);
-    color *= bh.a;
-    color += bh.rgb;
+    #ifdef NL_BLACKHOLE
+      vec4 bh = renderBlackhole(viewDir, v_posTime.w);
+      color *= bh.a;
+      color += bh.rgb;
+    #endif
 
     color = colorCorrection(color);
 

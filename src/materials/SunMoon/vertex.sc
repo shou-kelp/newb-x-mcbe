@@ -14,12 +14,7 @@ void main() {
     vec3 pos = a_position;
     v_pos = pos;
 
-    #ifdef NLC_SUNMOON_BLOOM // normalize sunmoon size
-      pos.xz *= NL_SUNMOON_SIZE * 10.0;
-    #else
-      pos.xz *= NL_SUNMOON_SIZE;
-    #endif
-
+    pos.xz *= NL_SUNMOON_SIZE * 10.0;
     #ifdef NL_SUNMOON_ANGLE
       float angle = NL_SUNMOON_ANGLE * 0.0174533;
       float sinA = sin(angle);

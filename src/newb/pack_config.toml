@@ -25,12 +25,11 @@ credits = '''
 
 [custom]
 label = '''
- - Highly recommended set brightness under 30
+ - Highly recommended set game brightness to 0
  - Low render chunk for better fog experience
  - Don't use experimental features and education mode (or some bugs will occur)
  - Disable Vsync for better performance
- - §7Use ESSL300 fixlag pack for Snapdragon-only to reduce sutter and lag spike issue§r
- - §4some devices specifically experience a bug in cloud render cuttting§r
+ - §4some devices specifically experience a bug in cloud cuttting§r
 
 §7Thanks for downloading and using this shader :)§r
 '''
@@ -42,67 +41,53 @@ input = '''
 
 
 [[subpack]]
-define = "ALWAYS_REFLECTION"
-materials = ["RenderChunk"]
+define = "OPT"
+materials = ["Sky", "RenderChunk", "EndSky", "Clouds"]
 description = '''
-Always Reflection
+Optimized
+
+Summary:
+Rounded cloud, galaxy star, the end blackhole, no wave.
 '''
 
 [[subpack]]
-define = "ROUNDED_MULTILAYER"
-materials = ["RenderChunk", "Clouds"]
+define = "MED"
+materials = ["Sky", "RenderChunk", "EndSky", "Clouds"]
 description = '''
-Rounded Multilayer Cloud
+Medium
+
+Summary:
+Rounded cloud, twinkling star, no wave.
 '''
 
 [[subpack]]
-define = "BOX_MULTILAYER"
-materials = ["RenderChunk", "Clouds"]
+define = "SMED"
+materials = ["Sky", "RenderChunk", "EndSky", "Clouds"]
 description = '''
-Box Multilayer Cloud
+Soft Medium
+
+Summary:
+Simple cloud, twinkling star, no wave.
 '''
 
 [[subpack]]
-define = "BOX_CLOUD"
-materials = ["RenderChunk", "Clouds"]
+define = "LOW"
+materials = ["Sky", "RenderChunk", "EndSky", "Clouds"]
 description = '''
-Box Cloud
+Low
+
+Summary:
+Box cloud, no wave, no galaxy star, no the end blackhole.
 '''
 
 [[subpack]]
-define = "SIMPLE_CLOUD"
-materials = ["RenderChunk", "Clouds"]
+define = "LOWEST"
+materials = ["Sky", "RenderChunk", "EndSky", "Clouds"]
 description = '''
-Simple Cloud
-'''
+Lowest
 
-
-[[subpack]]
-define = "CHUNK_ANIM"
-materials = ["RenderChunk"]
-description = '''
-Chunk Anim
-'''
-
-[[subpack]]
-define = "NO_WAVE_NO_FOG"
-materials = ["RenderChunk"]
-description = '''
-No Fog No Wave
-'''
-
-[[subpack]]
-define = "NO_FOG"
-materials = ["RenderChunk"]
-description = '''
-No Fog
-'''
-
-[[subpack]]
-define = "NO_WAVE"
-materials = ["RenderChunk"]
-description = '''
-No Wave
+Summary:
+Simple cloud, no wave, no galaxy star, no the end blackhole.
 '''
 
 [[subpack]]
@@ -110,4 +95,7 @@ define = "DEFAULT"
 materials = []
 description = '''
 Default
+
+Summary:
+Calm tonemap, cozy night skies, galaxy star, the end blackhole and immersive environment.
 '''
