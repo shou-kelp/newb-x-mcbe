@@ -7,7 +7,7 @@ description = '''
 ''' # %w = patch warning, %v = version
 authors = ["firmw4", "devendrn"]
 url = "https://devendrn.github.io/newb-shader/"
-uuid = "ed55ed21-ed0b-420e-a029-72183f99a270" # Use https://www.uuidgenerator.net/version4
+uuid = "46b3a3db-086f-4a68-8ac5-caf36f49891e" # Use https://www.uuidgenerator.net/version4
 materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "EndSky", "Clouds", "SunMoon", "Weather", "ItemInHandTextured", "ItemInHandColor", "ItemInHandColorGlint", "Stars"]
 
 [info] 
@@ -25,7 +25,7 @@ credits = '''
 
 [custom]
 label = '''
- - Highly recommended set game brightness to 0
+ - Highly recommended set in-game brightness to 0
  - Low render chunk for better fog experience
  - Don't use experimental features and education mode (or some bugs will occur)
  - Disable Vsync for better performance
@@ -51,6 +51,26 @@ Rounded cloud, galaxy star, the end blackhole, no wave.
 '''
 
 [[subpack]]
+define = "BOPT"
+materials = ["Sky", "RenderChunk", "EndSky", "Clouds"]
+description = '''
+Box Optimized
+
+Summary:
+Box cloud, galaxy star, the end blackhole, no wave.
+'''
+
+[[subpack]]
+define = "SOPT"
+materials = ["Sky", "RenderChunk", "EndSky", "Clouds"]
+description = '''
+Soft Optimized
+
+Summary:
+Simple cloud, galaxy star, the end blackhole, no wave.
+'''
+
+[[subpack]]
 define = "MED"
 materials = ["Sky", "RenderChunk", "EndSky", "Clouds"]
 description = '''
@@ -58,6 +78,16 @@ Medium
 
 Summary:
 Rounded cloud, twinkling star, no wave.
+'''
+
+[[subpack]]
+define = "BMED"
+materials = ["Sky", "RenderChunk", "EndSky", "Clouds"]
+description = '''
+Box Medium
+
+Summary:
+Box cloud, twinkling star, no wave.
 '''
 
 [[subpack]]

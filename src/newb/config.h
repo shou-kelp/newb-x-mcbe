@@ -211,13 +211,13 @@
 #define NL_FORCE_ONLY_END_REFL         // [toggle] force ground reflection only appear in the end
 
 /* Entity (Actor, ItemInHand) */
-#define NL_ENTITY_BRIGHTNESS     0.64    // 0.1 dark ~ 1.6 bright
-#define NL_ENTITY_EDGE_HIGHLIGHT 1.30    // 0.0 no highlight ~ 1.6 bright highlight
+#define NL_ENTITY_BRIGHTNESS     0.72    // 0.1 dark ~ 1.6 bright
+#define NL_ENTITY_EDGE_HIGHLIGHT 1.20    // 0.0 no highlight ~ 1.6 bright highlight
 
 /* Weather particles */
 #define NL_WEATHER_SPECK         0.15     // [toggle] 0.0 vanilla texture ~ 1.0 soft speck
-#define NL_WEATHER_RAIN_SLANT    1.05     // 1.0 minimal ~ 8.0 violent
-#define NL_WEATHER_PARTICLE_SIZE 1.80     // 0.5 tiny ~ 4.0 large
+#define NL_WEATHER_RAIN_SLANT    1.0     // 1.0 minimal ~ 8.0 violent
+#define NL_WEATHER_PARTICLE_SIZE 2.2     // 0.5 tiny ~ 4.0 large
 
 
 /*
@@ -264,11 +264,23 @@
   #undef NL_GALAXY_STARS
   #undef NL_END_GALAXY_STARS
   #undef NL_CLOUD_TYPE
-  #define NL_CLOUD_TYPE 1
+  #define NL_CLOUD_TYPE 0
   #define NL_TWINKLING_STARS 1.4
   #define NL_END_TWINKLING_STARS 1.6
 #endif
 
+#ifdef BMED
+  #undef NL_PLANTS_WAVE
+  #undef NL_LANTERN_WAVE
+  #undef NL_WATER_WAVE
+  #undef NL_UNDERWATER_WAVE
+  #undef NL_GALAXY_STARS
+  #undef NL_CLOUD_TYPE
+  #define NL_CLOUD_TYPE 1
+  #undef NL_END_GALAXY_STARS
+  #define NL_TWINKLING_STARS 1.4
+  #define NL_END_TWINKLING_STARS 1.6
+#endif
 #ifdef MED
   #undef NL_PLANTS_WAVE
   #undef NL_LANTERN_WAVE
@@ -278,6 +290,24 @@
   #undef NL_END_GALAXY_STARS
   #define NL_TWINKLING_STARS 1.4
   #define NL_END_TWINKLING_STARS 1.6
+#endif
+
+#ifdef SOPT
+  #undef NL_PLANTS_WAVE
+  #undef NL_LANTERN_WAVE
+  #undef NL_WATER_WAVE
+  #undef NL_UNDERWATER_WAVE
+  #undef NL_CLOUD_TYPE
+  #define NL_CLOUD_TYPE 0
+#endif
+
+#ifdef BOPT
+  #undef NL_PLANTS_WAVE
+  #undef NL_LANTERN_WAVE
+  #undef NL_WATER_WAVE
+  #undef NL_UNDERWATER_WAVE
+  #undef NL_CLOUD_TYPE
+  #define NL_CLOUD_TYPE 1
 #endif
 
 #ifdef OPT
