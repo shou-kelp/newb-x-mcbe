@@ -241,7 +241,7 @@
   #undef NL_END_GALAXY_STARS
   #undef NL_BLACKHOLE
   #undef NL_CLOUD_TYPE
-  #define NL_CLOUD_TYPE 0
+  #define NL_CLOUD_TYPE 1
 #endif
 
 #ifdef LOW
@@ -253,7 +253,7 @@
   #undef NL_END_GALAXY_STARS
   #undef NL_BLACKHOLE
   #undef NL_CLOUD_TYPE
-  #define NL_CLOUD_TYPE 1
+  #define NL_CLOUD_TYPE 0
 #endif
 
 #ifdef SMED
@@ -264,7 +264,7 @@
   #undef NL_GALAXY_STARS
   #undef NL_END_GALAXY_STARS
   #undef NL_CLOUD_TYPE
-  #define NL_CLOUD_TYPE 0
+  #define NL_CLOUD_TYPE 1
   #define NL_TWINKLING_STARS 1.4
   #define NL_END_TWINKLING_STARS 1.6
 #endif
@@ -276,7 +276,7 @@
   #undef NL_UNDERWATER_WAVE
   #undef NL_GALAXY_STARS
   #undef NL_CLOUD_TYPE
-  #define NL_CLOUD_TYPE 1
+  #define NL_CLOUD_TYPE 0
   #undef NL_END_GALAXY_STARS
   #define NL_TWINKLING_STARS 1.4
   #define NL_END_TWINKLING_STARS 1.6
@@ -298,7 +298,7 @@
   #undef NL_WATER_WAVE
   #undef NL_UNDERWATER_WAVE
   #undef NL_CLOUD_TYPE
-  #define NL_CLOUD_TYPE 0
+  #define NL_CLOUD_TYPE 1
 #endif
 
 #ifdef BOPT
@@ -307,7 +307,7 @@
   #undef NL_WATER_WAVE
   #undef NL_UNDERWATER_WAVE
   #undef NL_CLOUD_TYPE
-  #define NL_CLOUD_TYPE 1
+  #define NL_CLOUD_TYPE 0
 #endif
 
 #ifdef OPT
