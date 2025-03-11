@@ -102,9 +102,35 @@ vec3 getSunBloom(float viewDirX, vec3 horizonEdgeCol, vec3 FOG_COLOR) {
   return NL_MORNING_SUN_COL*horizonEdgeCol*(sunBloom*factor*factor);
 }
 
+#if NL_END_SKY_TYPE == 2
+vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 viewDir, float t) {
+  float a = atan2(viewDir.x, viewDir.z);
+
+  float n1 = 0.6 + 0.5*sin(11.0*a + t + 1.0*viewDir.x*viewDir.y);
+  float n2 = 0.6 + 0.5*sin(5.0*a + 0.5*t + 7.0*n1 + 0.1*sin(40.0*a -4.0*t));
+
+  float waves = 0.5*n2*n1 + 0.4*n1;
+  float grad = 0.5 + 0.5*viewDir.y;
+  float streaks = waves*(1.0 - grad*grad*grad);
+
+  streaks += (0.8-streaks)*smoothstep(0.1-waves, -1.0, viewDir.y);
+
+  float f = 0.6*streaks + 0.4*smoothstep(1.0, -0.5, viewDir.y);
+  float h = streaks*streaks;
+  float g = h*h;
+  g *= g;
+
+  vec3 mixHorizon = mix(horizonCol, vec3(0.4, 0.2, 1.0), 1.0);
+  vec3 sky = mix(zenithCol, mixHorizon, f*f*f);
+  sky += (0.1*streaks + 2.0*g*g*g + h*h*h) * mixHorizon;
+  sky += 0.2*streaks*horizonCol;
+
+  return sky;
+}
+#elif NL_END_SKY_TYPE == 1
 vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 v, float t){
   vec3 sky = vec3(0.0, 0.0, 0.0);
-  v.y = smoothstep(-1.2,1.5,abs(v.y)); // sky 2
+  v.y = smoothstep(-1.2,1.5,abs(v.y));
   v.x += 0.0*sin(10.0*v.y - t + v.z);
 
   float a = atan2(v.x, v.z);
@@ -121,6 +147,7 @@ vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 v, float t){
 
   return sky;
 }
+#endif
 
 vec3 nlRenderSky(nl_skycolor skycol, nl_environment env, vec3 viewDir, vec3 FOG_COLOR, float t) {
   vec3 sky;

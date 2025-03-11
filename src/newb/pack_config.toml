@@ -1,5 +1,5 @@
 name = "§lNewb §6Pineapple§r"
-version = [0, 4, 3]
+version = [0, 4, 4]
 min_supported_mc_version = [1, 21, 20]
 description = '''
 §7Another newb variants to improve your minecraft visual with bright lighting, low saturation, soft shadow, foggy environment and immersive bloom.§r
@@ -23,18 +23,17 @@ Contact (Discord Server): https://discord.gg/newb-community-844591537430069279
 credits = '''
 '''
 
-[custom]
-label = '''
- - Highly recommended set brightness under 50
- - Low render chunk for better fog experience
- - Don't use experimental features and education mode (or some bugs will occur)
- - Disable Vsync for better performance
- - §7Use ESSL300 fixlag pack for Snapdragon-only to reduce sutter and lag spike issue§r
- - §4some devices specifically experience a bug in cloud render cuttting§r
+[label]
+text = '''
+Recommended set in-game brightness to 0
+Low render chunk for better fog experience
+Don't use experimental features and education mode (or some bugs will occur)
 
-§7Thanks for downloading and using this shader :)§r
-'''
-input = '''
+§cNeed an unofficial way to load this RenderDragon shader
+%w
+Some devices will experience some cloud bugs§r
+
+§7Thank you very much for downloading and using this shader :)§r
 '''
 
 # subpacks are arranged in left to right order
@@ -46,20 +45,6 @@ define = "GALAXY_STARS"
 materials = ["Sky", "EndSky"]
 description = '''
 Galaxy Stars
-'''
-
-[[subpack]]
-define = "TWINKLE_STARS"
-materials = ["Sky", "EndSky"]
-description = '''
-Twinkling Stars
-'''
-
-[[subpack]]
-define = "ALWAYS_REFLECTION"
-materials = ["RenderChunk"]
-description = '''
-Always Reflection
 '''
 
 [[subpack]]
@@ -90,6 +75,12 @@ description = '''
 Simple Cloud
 '''
 
+[[subpack]]
+define = "ALWAYS_REFLECTION"
+materials = ["RenderChunk"]
+description = '''
+Always Reflection
+'''
 
 [[subpack]]
 define = "CHUNK_ANIM"

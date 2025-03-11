@@ -24,9 +24,9 @@ float fastRand(vec2 n){
 }
 
 // water displacement map (also used by caustic)
-float disp(vec3 pos, float t, float s) {
-  float n = sin(8.0*NL_CONST_PI_HALF*(pos.x+pos.y*pos.z) + 0.7*s*t);
-  pos.y += s*t + 0.8*n;
+float disp(vec3 pos, float t) {
+  float n = sin(8.0*NL_CONST_PI_HALF*(pos.x+pos.y*pos.z) + 0.7*t);
+  pos.y += t + 0.8*n;
   float p = floor(pos.y);
   return (0.8+0.2*n) * mix(fastRand(pos.xz+p), fastRand(pos.xz+p+1.0), pos.y - p);
 }
@@ -73,22 +73,21 @@ float noise3D(vec3 p){
 
 // simple hash function for generating values for each star point
 float hashStar(vec3 p) {
-    return fract(cos(dot(p, vec3(127.1, 311.7, 74.7))) * 43758.5453123);
+  return fract(cos(dot(p, vec3(127.1, 311.7, 74.7))) * 43758.5453123);
 }
 
 // generate random star
 float randStar(vec3 p) {
-    vec3 i = floor(p);
-    vec3 f = fract(p);
-    vec3 u = f * f * (3.0 - 2.0 * f);
+  vec3 i = floor(p);
+  vec3 f = fract(p);
+  vec3 u = f * f * (3.0 - 2.0 * f);
 
-    float h0 = mix(hashStar(i), hashStar(i + vec3(1.0, 0.0, 0.0)), u.x);
-    float h1 = mix(hashStar(i + vec3(0.0, 1.0, 0.0)), hashStar(i + vec3(1.0, 1.0, 0.0)), u.x);
+  float h0 = mix(hashStar(i), hashStar(i + vec3(1.0, 0.0, 0.0)), u.x);
+  float h1 = mix(hashStar(i + vec3(0.0, 1.0, 0.0)), hashStar(i + vec3(1.0, 1.0, 0.0)), u.x);
+  float h2 = mix(hashStar(i + vec3(0.0, 0.0, 1.0)), hashStar(i + vec3(1.0, 0.0, 1.0)), u.x);
+  float h3 = mix(hashStar(i + vec3(0.0, 1.0, 1.0)), hashStar(i + vec3(1.0, 1.0, 1.0)), u.x);
 
-    float h2 = mix(hashStar(i + vec3(0.0, 0.0, 1.0)), hashStar(i + vec3(1.0, 0.0, 1.0)), u.x);
-    float h3 = mix(hashStar(i + vec3(0.0, 1.0, 1.0)), hashStar(i + vec3(1.0, 1.0, 1.0)), u.x);
-
-    return mix(mix(h0, h1, u.y), mix(h2, h3, u.y), u.z);
+  return mix(mix(h0, h1, u.y), mix(h2, h3, u.y), u.z);
 }
 
 #endif

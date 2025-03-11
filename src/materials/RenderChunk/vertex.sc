@@ -23,6 +23,10 @@ void main() {
 
   #if !(defined(DEPTH_ONLY_OPAQUE) || defined(DEPTH_ONLY) || defined(INSTANCING))
 
+  #ifdef NL_CHUNK_LOAD_ANIM
+    worldPos.y -= NL_CHUNK_LOAD_ANIM*RenderChunkFogAlpha.x*RenderChunkFogAlpha.x*RenderChunkFogAlpha.x;
+  #endif
+
   #ifdef RENDER_AS_BILLBOARDS
     worldPos += vec3(0.5,0.5,0.5);
 
@@ -88,11 +92,6 @@ void main() {
     nlWave(worldPos, light, env.rainFactor, uv1, lit, a_texcoord0, bPos, a_color0, cPos, tiledCpos, t, isColored, camDis, isTree);
   #endif
 
-  #ifdef NL_CHUNK_LOAD_ANIM
-    // slide in anim
-    worldPos.y -= NL_CHUNK_LOAD_ANIM*pow(RenderChunkFogAlpha.x,3.0);
-  #endif
-
   // loading chunks
   relativeDist += RenderChunkFogAlpha.x;
 
@@ -143,10 +142,10 @@ void main() {
 
   color.rgb *= light;
 
-  #if defined(NL_GLOW_SHIMMER) && !(defined(RENDER_AS_BILLBOARDS) || defined(OPAQUE))
+  #if defined(NL_GLOW_SHIMMER) && !(defined(RENDER_AS_BILLBOARDS) || defined(SEASONS))
     float shimmer = nlGlowShimmer(cPos, t);
   #else
-    float shimmer = 0.0;
+    float shimmer = 1.0;
   #endif
 
   v_extra = vec4(shade, worldPos.y, water, shimmer);

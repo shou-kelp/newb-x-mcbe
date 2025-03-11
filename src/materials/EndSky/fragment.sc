@@ -26,11 +26,11 @@ void main() {
     #ifdef NL_SHOOTING_STAR
       color.rgb += NL_SHOOTING_STAR*nlRenderShootingStar(viewDir, color, v_posTime.w);
     #endif
-    #ifdef NLC_END_GALAXY_STARS
-      color.rgb += NLC_END_GALAXY_STARS*nlRenderGalaxy(viewDir, color, env, v_posTime.w);
+    #ifdef NL_END_GALAXY_STARS
+      color.rgb += NL_END_GALAXY_STARS*nlRenderGalaxy(viewDir, color, env, v_posTime.w);
     #endif
-    #ifdef NLC_END_TWINKLING_STARS
-      color.rgb += NLC_END_TWINKLING_STARS*nlRenderStars(viewDir, color, env, v_posTime.w);
+    #ifdef NL_END_TWINKLING_STARS
+      color.rgb += NL_END_TWINKLING_STARS*nlRenderStars(viewDir, color, env, v_posTime.w);
     #endif
 
     color = colorCorrection(color);

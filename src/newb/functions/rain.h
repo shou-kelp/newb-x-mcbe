@@ -40,7 +40,7 @@ vec4 nlRefl(
           // only multiply with wetness in overworld
           reflective *= wetness;
         }
-        #ifdef NLC_FORCE_ONLY_END_REFL
+        #ifdef NL_FORCE_ONLY_END_REFL
         if (!env.end) {
           reflective = 0.0;
         }

@@ -33,8 +33,8 @@ void main() {
     #ifdef NL_GALAXY_STARS
       skyColor += NL_GALAXY_STARS*nlRenderGalaxy(viewDir, v_fogColor, env, v_underwaterRainTime.z);
     #endif
-    #ifdef NLC_TWINKLING_STARS
-      skyColor += NLC_TWINKLING_STARS*nlRenderStars(viewDir, v_fogColor, env, v_underwaterRainTime.z);
+    #ifdef NL_TWINKLING_STARS
+      skyColor += NL_TWINKLING_STARS*nlRenderStars(viewDir, v_fogColor, env, v_underwaterRainTime.z);
     #endif
 
     skyColor = colorCorrection(skyColor);
