@@ -86,6 +86,14 @@
 #define NL_END_ZENITH_COL  vec3(0.040, 0.020, 0.100)
 #define NL_END_HORIZON_COL vec3(0.200, 0.080, 0.380)
 
+/* Blackhole in the end sky */
+#define NL_BLACKHOLE       // [toggle] blackhole in the end sky
+#define NL_BH_COL_LOW  vec3(0.1, 0.1, 1.0)
+#define NL_BH_COL_HIGH vec3(0.6, 0.2, 0.8)
+#define NL_BH_DIR      2.2 // direction
+#define NL_BH_DIST     1.4 // distance 
+#define NL_BH_SPEED    1.3 // animation speed 
+
 /* Rainbow */
 //#define NL_RAINBOW // [toggle] enable rainbow in sky
 #define NL_RAINBOW_CLEAR 1.0     // 0.3 subtle ~ 1.7 bright during clear
