@@ -57,7 +57,7 @@ float cloudDf(vec3 pos, float rain, vec2 boxiness) {
   return n;
 }
 
-vec4 renderClouds(
+vec4 renderCloudsRounded(
     vec3 vDir, vec3 vPos, float rain, float time, vec3 horizonCol, vec3 zenithCol,
     int steps, float thickness, float thickness_rain, float speed, vec2 scale, float density, vec2 boxiness
 ) {
@@ -109,6 +109,90 @@ vec4 renderClouds(
     col.rgb = mix(col.rgb, duskColor, dusk);
   }
   */
+
+  return col;
+}
+
+vec4 renderCloudsRounded(
+    vec3 vDir, vec3 vPos, float rain, float time, vec3 horizonCol, vec3 zenithCol,
+    const int steps, const float thickness, const float thickness_rain, const float speed,
+    const vec2 scale, const float density, const vec2 boxiness
+) {
+  float height = 7.0*mix(thickness, thickness_rain, rain);
+  float stepsf = float(steps);
+
+  // scaled ray offset
+  vec3 deltaP;
+  deltaP.y = 1.0;
+  deltaP.xz = height*scale*vDir.xz/(0.02+0.98*abs(vDir.y));
+
+  // local cloud pos
+  vec3 pos;
+  pos.y = 0.0;
+  pos.xz = scale*(vPos.xz + vec2(1.0,0.5)*(time*speed));
+  pos += deltaP;
+
+  deltaP /= -stepsf;
+
+  // alpha, gradient
+  vec2 d = vec2(0.0,1.0);
+  for (int i=1; i<=steps; i++) {
+    float m = cloudDf(pos, rain, boxiness);
+    d.x += m;
+    d.y = mix(d.y, pos.y, m);
+    pos += deltaP;
+  }
+  d.x *= smoothstep(0.03, 0.1, d.x);
+  d.x /= (stepsf/density) + d.x;
+
+  if (vPos.y < 0.0) { // view from top
+    d.y = 1.0 - d.y;
+  }
+
+  vec4 col = vec4(zenithCol + horizonCol, d.x);
+  col.rgb += dot(col.rgb, vec3(0.3,0.4,0.3))*d.y*d.y;
+  col.rgb *= 1.0 - 0.8*rain;
+  return col;
+}
+
+float cloudsNoiseVr(vec2 p, float t) {
+  float n = fastVoronoi2(p + t, 1.8);
+  n *= fastVoronoi2(3.0*p + t, 1.5);
+  n *= fastVoronoi2(9.0*p + t, 0.4);
+  n *= fastVoronoi2(27.0*p + t, 0.1);
+  //n *= fastVoronoi2(82.0*pos + t, 0.02); // more quality
+  return n*n;
+}
+
+vec4 renderClouds(vec2 p, float t, float rain, vec3 horizonCol, vec3 zenithCol, const vec2 scale, const float velocity, const float shadow) {
+  p *= scale;
+  t *= velocity;
+
+  // layer 1
+  float a = cloudsNoiseVr(p, t);
+  float b = cloudsNoiseVr(p + NL_CLOUD3_SHADOW_OFFSET*scale, t);
+
+  // layer 2
+  p = 1.4 * p.yx + vec2(7.8, 9.2);
+  t *= 0.5;
+  float c = cloudsNoiseVr(p, t);
+  float d = cloudsNoiseVr(p + NL_CLOUD3_SHADOW_OFFSET*scale, t);
+
+  // higher = less clouds thickness
+  // lower separation betwen x & y = sharper
+  vec2 tr = vec2(0.6, 0.7) - 0.12*rain;
+  a = smoothstep(tr.x, tr.y, a);
+  c = smoothstep(tr.x, tr.y, c);
+
+  // shadow
+  b *= smoothstep(0.2, 0.8, b);
+  d *= smoothstep(0.2, 0.8, d);
+
+  vec4 col;
+  col.a = a + c*(1.0-a);
+  col.rgb = horizonCol + horizonCol.ggg;
+  col.rgb = mix(col.rgb, 0.5*(zenithCol + zenithCol.ggg), shadow*mix(b, d, c));
+  col.rgb *= 1.0-0.7*rain;
 
   return col;
 }

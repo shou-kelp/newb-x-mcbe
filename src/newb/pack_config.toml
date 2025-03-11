@@ -48,6 +48,13 @@ Galaxy Stars
 '''
 
 [[subpack]]
+define = "REALISTIC_CLOUD"
+materials = ["RenderChunk", "Clouds"]
+description = '''
+Realistic Cloud
+'''
+
+[[subpack]]
 define = "ROUNDED_MULTILAYER"
 materials = ["RenderChunk", "Clouds"]
 description = '''
