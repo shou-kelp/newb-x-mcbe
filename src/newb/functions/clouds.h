@@ -65,12 +65,12 @@ vec4 renderCloudsRounded(
   float height = 7.0 * mix(thickness, thickness_rain, rain);
   float stepsf = float(steps);
 
-  // Offset ray
+  // scaled offset ray
   vec3 deltaP;
   deltaP.y = 1.0;
   deltaP.xz = height * scale * vDir.xz / (0.02 + 0.98 * abs(vDir.y));
 
-  // Cloud pos
+  // local cloud pos
   vec3 pos;
   pos.y = 0.0;
   pos.xz = scale * (vPos.xz + vec2(1.0, 0.5) * (time * speed));
@@ -86,30 +86,26 @@ vec4 renderCloudsRounded(
     pos += deltaP;
   }
 
-  // Smooth step for cloud distribution
   d.x *= smoothstep(0.12, 0.14, d.x);
   d.x /= (stepsf / density) + d.x;
 
-  if (vPos.y < 0.0) {
+  if (vPos.y < 0.0) { // view from top
     d.y = 1.0 - d.y;
   }
-  //d.y = 1.0 - NL_CLOUD2_EDGE * d.y * d.y;
 
-  // detection
+  // experimental
   float night = max(1.1 - 3.0 * max(horizonCol.b, horizonCol.g), 0.0);
   // float dusk = max(0.0, max(horizonCol.r, horizonCol.g) - 0.5);
 
   vec4 col = vec4(zenithCol + horizonCol, d.x);
-  col.rgb += dot(col.rgb, vec3(0.3, 0.4, 0.3)) * d.y * d.y;
-  col.rgb *= 1.0 - 0.8 * rain;
-  col.rgb *= 1.0 - 0.8 * night;
+  col.rgb += dot(col.rgb, vec3(0.3, 0.4, 0.3))*d.y*d.y;
+  col.rgb *= 0.8 - 0.6*rain;
+  col.rgb *= 0.8 - 0.6*night;
 
-  /*
-  if (dusk > 0.0) {
-    vec3 duskColor = vec3(0.8, 0.2, 0.4);
-    col.rgb = mix(col.rgb, duskColor, dusk);
-  }
-  */
+  //if (dusk > 0.0) {
+  //  vec3 duskColor = vec3(0.8, 0.2, 0.4);
+  //  col.rgb = mix(col.rgb, duskColor, dusk);
+  //}
 
   return col;
 }

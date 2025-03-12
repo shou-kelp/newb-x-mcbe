@@ -55,13 +55,13 @@
 #define NL_NIGHT_SUN_COL    vec3(0.8, 0.67, 0.92)
 
 /* Ambient light on terrain (light that is added everywhere) */
-#define NL_NETHER_AMBIENT   vec3(2.61, 2.40, 1.71)
+#define NL_NETHER_AMBIENT   vec3(2.51, 2.30, 1.61)
 #define NL_END_AMBIENT      vec3(0.48, 0.39, 0.96)
 
 /* Torch colors */
 #define NL_OVERWORLD_TORCH_COL  vec3(1.000, 0.510, 0.300)
 #define NL_UNDERWATER_TORCH_COL vec3(0.035, 0.650, 0.405)
-#define NL_NETHER_TORCH_COL     vec3(2.320, 1.540, 1.210)
+#define NL_NETHER_TORCH_COL     vec3(2.120, 1.340, 1.010)
 #define NL_END_TORCH_COL        vec3(0.800, 0.420, 1.000)
 
 /* Fog */
@@ -79,20 +79,20 @@
 #define NL_DAWN_HORIZON_COL     vec3(1.000, 0.350, 0.080)
 #define NL_DAWN_EDGE_COL        vec3(0.500, 0.115, 0.140)
 #define NL_RAIN_ZENITH_COL      vec3(0.280, 0.300, 0.340)
-#define NL_RAIN_HORIZON_COL     vec3(0.460, 0.510, 0.620)
+#define NL_RAIN_HORIZON_COL     vec3(0.360, 0.410, 0.620)
 
 /* The end sky */
 #define NL_END_SKY_TYPE    1
-#define NL_END_ZENITH_COL  vec3(0.040, 0.020, 0.100)
-#define NL_END_HORIZON_COL vec3(0.200, 0.080, 0.380)
+#define NL_END_ZENITH_COL  vec3(0.040, 0.020, 0.060)
+#define NL_END_HORIZON_COL vec3(0.160, 0.080, 0.340)
 
 /* Blackhole in the end sky */
-#define NL_BLACKHOLE       // [toggle] blackhole in the end sky
-#define NL_BH_COL_LOW  vec3(0.1, 0.1, 1.0)
-#define NL_BH_COL_HIGH vec3(0.6, 0.2, 0.8)
-#define NL_BH_DIR      2.2 // direction
-#define NL_BH_DIST     1.4 // distance 
-#define NL_BH_SPEED    1.3 // animation speed 
+#define NL_BLACKHOLE    // [toggle] blackhole in the end sky
+#define NL_BH_COL_LOW  vec3(0.2, 0.1, 0.4)
+#define NL_BH_COL_HIGH vec3(0.4, 0.2, 0.6)
+#define NL_BH_DIR      2.26     // y axis direction
+#define NL_BH_DIST     4.0      // 1.0 close - 4.0 far
+#define NL_BH_SPEED    0.6      // 0.0 static - 2.0 violent
 
 /* Rainbow */
 //#define NL_RAINBOW // [toggle] enable rainbow in sky
@@ -102,7 +102,7 @@
 /* Ore glow intensity */
 #define NL_GLOW_TEX           4.4   // 0.4 weak ~ 8.0 bright
 //#define NL_GLOW_SHIMMER       0.8   // [toggle] 0.1 subtle ~ 1.0 100% shimmer
-#define NL_GLOW_SHIMMER_SPEED 0.9 // 0.5 slow ~ 2.0 fast
+#define NL_GLOW_SHIMMER_SPEED 0.9   // 0.5 slow ~ 2.0 fast
 //#define NL_GLOW_LEAK          0.6   // [toggle] 0.08 subtle ~ 1.0 100% brightness of NL_GLOW_TEX
 
 /* Waving */
@@ -163,10 +163,10 @@
 #define NL_CLOUD2_LAYER2_VELOCITY       0.8     // 0.0 static ~ 4.0 very fast
 
 /* Realistic cloud settings */
-#define NL_CLOUD3_SCALE         vec2(0.03, 0.03) // 0.003 large ~ 1.0 tiny
-#define NL_CLOUD3_SPEED         0.005   // 0.0 static ~ 4.0 fast moving
+#define NL_CLOUD3_SCALE         vec2(0.034, 0.03) // 0.003 large ~ 1.0 tiny
+#define NL_CLOUD3_SPEED         0.008   // 0.0 static ~ 4.0 fast moving
 #define NL_CLOUD3_SHADOW        0.7     // 0.1 subtle ~ 1.0 dark
-#define NL_CLOUD3_SHADOW_OFFSET 0.3     // 0.05 minimal ~ 1.0 large
+#define NL_CLOUD3_SHADOW_OFFSET 0.6     // 0.05 minimal ~ 1.0 large
 
 /* Aurora settings */
 #define NL_AURORA          3.4
@@ -188,8 +188,8 @@
 
 /* Galaxy */
 //#define NL_GALAXY_STARS          1.2     // [toggle] 0.1 dim - 4.0 bright
-#define NL_GALAXY_VIBRANCE       0.4     // 0.0 white - 1.0 colorful
-#define NL_GALAXY_SPEED          0.03    // 0.01 slow motion - 0.2 fast motion
+#define NL_GALAXY_VIBRANCE       0.42     // 0.0 white - 1.0 colorful
+#define NL_GALAXY_SPEED          0.06    // 0.01 slow motion - 0.2 fast motion
 #define NL_GALAXY_DAY_VISIBILITY 0.0     // 0.0 invisible - 1.0 visible
 //#define NL_END_GALAXY_STARS      1.4     // [toggle] 0.1 dim ~ 4.0 bright
 
@@ -225,7 +225,7 @@
 
 /* Lava effects */
 #define NL_LAVA_NOISE               // [toggle] darken lava in certain regions
-//#define NL_LAVA_NOISE_BUMP  0.2     // [toggle] 0.1 subtle ~ 0.8 massive waves
+#define NL_LAVA_NOISE_BUMP  0.12     // [toggle] 0.1 subtle ~ 0.8 massive waves
 #define NL_LAVA_NOISE_SPEED 0.02    // 0.0 still ~ 0.1 fast
 
 
@@ -309,10 +309,10 @@
   #define NL_END_GALAXY_STARS 1.4
 #endif
 
-#ifdef ULTRA // realistic cloud, galaxy stars, always reflection
-  #undef NL_FORCE_ONLY_END_REFL
+#ifdef ULTRA // realistic cloud, galaxy stars, sharp shadow, cloudy fog
   #undef NL_CLOUD_TYPE
   #define NL_CLOUD_TYPE 3
+  #define NL_CLOUDY_FOG 0.42
   #define NL_SHARP_SHADOW
   #define NL_GALAXY_STARS 1.2 
   #define NL_END_GALAXY_STARS 1.4

@@ -25,14 +25,14 @@ credits = '''
 
 [label]
 text = '''
- Recommended set in-game brightness to 40
- Low render chunk for better fog experience
- Don't use experimental features and education mode (or some bugs will occur)
+Recommended set in-game brightness to 40
+Lower render chunk for better fog experience
+Don't use experimental features and education mode (or some bugs will occur)
 
- §cShaders are not officially supported on Minecraft Bedrock. The following are unofficial ways to load shaders.
- Some devices will experience some cloud bugs§r
+§cShaders are not officially supported on Minecraft Bedrock. The following are unofficial ways to load shaders.
+Some devices will experience some cloud bugs§r
 
- Thank you very much for downloading and using this shader :)§r
+Thank you very much for downloading and using this shader :)§r
 '''
 
 # subpacks are arranged in left to right order
@@ -44,6 +44,7 @@ define = "ULTRA"
 materials = ["RenderChunk", "Clouds", "Sky", "EndSky"]
 description = '''
 Ultra
+§cMay affect performance§r
 '''
 
 [[subpack]]
@@ -51,6 +52,7 @@ define = "REHIGH"
 materials = ["RenderChunk", "Clouds", "Sky", "EndSky"]
 description = '''
 High with realistic cloud
+§cMay affect performance§r
 '''
 
 [[subpack]]
@@ -58,6 +60,7 @@ define = "BMHIGH"
 materials = ["RenderChunk", "Clouds", "Sky", "EndSky"]
 description = '''
 High with box multilayer
+§cMay affect performance§r
 '''
 
 [[subpack]]
@@ -65,6 +68,7 @@ define = "BHIGH"
 materials = ["RenderChunk", "Clouds", "Sky", "EndSky"]
 description = '''
 High with box cloud
+§cMay affect performance§r
 '''
 
 [[subpack]]
@@ -72,6 +76,7 @@ define = "HIGH"
 materials = ["RenderChunk", "Sky", "EndSky"]
 description = '''
 High
+§cMay affect performance§r
 '''
 
 [[subpack]]
