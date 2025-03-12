@@ -1,16 +1,198 @@
 {
   "biomes": {
     "default": {
+      "water_surface_color": "#a8cfff",
       "water_surface_transparency": 0.65
     },
+
+    "plains": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "sunflower_plains": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "desert": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "extreme_hills": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "forest": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "flower_forest": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "taiga": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "taiga_mutated": {
+      "water_surface_color": "#a8cfff"
+    },
+
     "swampland": {
+      "water_surface_color": "#a8cfff",
       "water_surface_transparency": 0.94
     },
+
     "swampland_mutated": {
+      "water_surface_color": "#a8cfff",
       "water_surface_transparency": 0.94
     },
+
+    "mangrove_swamp": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "river": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "hell": {
+      "water_surface_color": "#a8cfff",
+      "fog_identifier": "newb:fog_hell",
+      "inherit_from_prior_fog": false
+    },
+
     "the_end": {
       "fog_identifier": "newb:fog_the_end"
+    },
+
+    "frozen_river": {
+      "fog_identifier": "newb:fog_frozen_river",
+      "water_surface_color": "#14559b",
+      "water_surface_transparency": 0.75
+    },
+
+    "ice_plains": {
+      "fog_identifier": "newb:fog_ice_plains",
+      "water_surface_color": "#14559b",
+      "water_surface_transparency": 0.75
+    },
+
+    "ice_spikes": {
+      "fog_identifier": "newb:fog_ice_spikes",
+      "water_surface_color": "#14559b",
+      "water_surface_transparency": 0.75
+    },
+
+    "ice_mountains": {
+      "fog_identifier": "newb:fog_ice_mountains",
+      "water_surface_color": "#14559b",
+      "water_surface_transparency": 0.75
+    },
+
+    "deep_frozen_ocean": {
+      "fog_identifier": "newb:fog_deep_frozen_ocean",
+      "water_surface_color": "#14559b",
+      "water_surface_transparency": 0.75
+    },
+
+    "mushroom_island": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "mushroom_island_shore": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "beach": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "jungle": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "bamboo_jungle": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "stone_beach": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "cold_beach": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "birch_forest": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "roofed_forest": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "cold_taiga": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "mega_taiga": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "savanna": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "mesa": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "ocean": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "warm_ocean": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "lukewarm_ocean": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "cold_ocean": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "frozen_ocean": {
+      "water_surface_color": "#a8cfff"
+    },
+
+    "warped_forest": {
+      "fog_identifier": "newb:fog_warped_forest",
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#a8cfff"
+    },
+
+    "crimson_forest": {
+      "fog_identifier": "newb:fog_crimson_forest",
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#a8cfff"
+    },
+
+    "soulsand_valley": {
+      "fog_identifier": "newb:fog_soulsand_valley",
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#a8cfff"
+    },
+
+    "basalt_deltas": {
+      "fog_identifier": "newb:fog_basalt_deltas",
+      "inherit_from_prior_fog": false,
+      "water_surface_color": "#a8cfff"
+    },
+
+    "cherry_grove": {
+      "water_surface_color": "#a8cfff"
     }
   }
 }

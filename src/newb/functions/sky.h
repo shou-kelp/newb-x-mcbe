@@ -320,7 +320,7 @@ vec3 nlRenderStars(vec3 viewDir, vec3 fogColor, nl_environment env, float time) 
   float f = 0.5 + 0.5*sin(randStar(viewDir*180.0 + vec3(time, time, time))*6.28 + time*0.5);
   s *= mix(0.4, 1.4, randStar(viewDir*100.0 + vec3(time, time, time)))*f;
   if (!env.end) {
-    float a = mix(1.0, NLC_STARS_DAY_VISIBILITY, min(dot(fogColor, vec3(0.5, 0.7, 0.5)), 1.0));
+    float a = mix(1.0, NL_STARS_DAY_VISIBILITY, min(dot(fogColor, vec3(0.5, 0.7, 0.5)), 1.0));
     s *= a*max(1.0 - 3.0*max(fogColor.b, fogColor.g), 0.0);
   }
 

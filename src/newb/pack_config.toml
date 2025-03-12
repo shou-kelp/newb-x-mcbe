@@ -25,15 +25,14 @@ credits = '''
 
 [label]
 text = '''
-Recommended set in-game brightness to 0
-Low render chunk for better fog experience
-Don't use experimental features and education mode (or some bugs will occur)
+ Recommended set in-game brightness to 40
+ Low render chunk for better fog experience
+ Don't use experimental features and education mode (or some bugs will occur)
 
-§cNeed an unofficial way to load this RenderDragon shader
-%w
-Some devices will experience some cloud bugs§r
+ §cShaders are not officially supported on Minecraft Bedrock. The following are unofficial ways to load shaders.
+ Some devices will experience some cloud bugs§r
 
-§7Thank you very much for downloading and using this shader :)§r
+ Thank you very much for downloading and using this shader :)§r
 '''
 
 # subpacks are arranged in left to right order
@@ -41,80 +40,73 @@ Some devices will experience some cloud bugs§r
 
 
 [[subpack]]
-define = "GALAXY_STARS"
-materials = ["Sky", "EndSky"]
+define = "ULTRA"
+materials = ["RenderChunk", "Clouds", "Sky", "EndSky"]
 description = '''
-Galaxy Stars
+Ultra
 '''
 
 [[subpack]]
-define = "REALISTIC_CLOUD"
+define = "REHIGH"
+materials = ["RenderChunk", "Clouds", "Sky", "EndSky"]
+description = '''
+High with realistic cloud
+'''
+
+[[subpack]]
+define = "BMHIGH"
+materials = ["RenderChunk", "Clouds", "Sky", "EndSky"]
+description = '''
+High with box multilayer
+'''
+
+[[subpack]]
+define = "BHIGH"
+materials = ["RenderChunk", "Clouds", "Sky", "EndSky"]
+description = '''
+High with box cloud
+'''
+
+[[subpack]]
+define = "HIGH"
+materials = ["RenderChunk", "Sky", "EndSky"]
+description = '''
+High
+'''
+
+[[subpack]]
+define = "BMMED"
+materials = ["RenderChunk", "Clouds", "Sky", "EndSky"]
+description = '''
+Medium with box multilayer
+'''
+
+[[subpack]]
+define = "BMED"
+materials = ["RenderChunk", "Clouds", "Sky", "EndSky"]
+description = '''
+Medium with box cloud
+'''
+
+[[subpack]]
+define = "MED"
+materials = ["RenderChunk", "Sky", "EndSky"]
+description = '''
+Medium
+'''
+
+[[subpack]]
+define = "LOW"
 materials = ["RenderChunk", "Clouds"]
 description = '''
-Realistic Cloud
+Low
 '''
 
 [[subpack]]
-define = "ROUNDED_MULTILAYER"
-materials = ["RenderChunk", "Clouds"]
+define = "LOWEST"
+materials = ["RenderChunk", "Clouds", "SunMoon", "EndSky"]
 description = '''
-Rounded Multilayer Cloud
-'''
-
-[[subpack]]
-define = "BOX_MULTILAYER"
-materials = ["RenderChunk", "Clouds"]
-description = '''
-Box Multilayer Cloud
-'''
-
-[[subpack]]
-define = "BOX_CLOUD"
-materials = ["RenderChunk", "Clouds"]
-description = '''
-Box Cloud
-'''
-
-[[subpack]]
-define = "SIMPLE_CLOUD"
-materials = ["RenderChunk", "Clouds"]
-description = '''
-Simple Cloud
-'''
-
-[[subpack]]
-define = "ALWAYS_REFLECTION"
-materials = ["RenderChunk"]
-description = '''
-Always Reflection
-'''
-
-[[subpack]]
-define = "CHUNK_ANIM"
-materials = ["RenderChunk"]
-description = '''
-Chunk Anim
-'''
-
-[[subpack]]
-define = "NO_WAVE_NO_FOG"
-materials = ["RenderChunk"]
-description = '''
-No Fog No Wave
-'''
-
-[[subpack]]
-define = "NO_FOG"
-materials = ["RenderChunk"]
-description = '''
-No Fog
-'''
-
-[[subpack]]
-define = "NO_WAVE"
-materials = ["RenderChunk"]
-description = '''
-No Wave
+Lowest
 '''
 
 [[subpack]]
