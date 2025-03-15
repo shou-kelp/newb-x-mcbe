@@ -120,7 +120,7 @@ vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 viewDir, float t) {
   float g = h*h;
   g *= g;
 
-  vec3 mixHorizon = mix(horizonCol, vec3(0.4, 0.2, 1.0), 1.0);
+  vec3 mixHorizon = mix(horizonCol, NL_END_STREAK, 1.0);
   vec3 sky = mix(zenithCol, mixHorizon, f*f*f);
   sky += (0.1*streaks + 2.0*g*g*g + h*h*h) * mixHorizon;
   sky += 0.2*streaks*horizonCol;
@@ -143,7 +143,7 @@ vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 v, float t){
   float f = (1.0*g + 1.5*smoothstep(1.2,-0.1,v.y));
   float h = (1.0*g + 0.2*smoothstep(0.9,-0.2,v.y));
   sky += mix(zenithCol, horizonCol, f*f);
-  sky += (g*g*g*g*0.8 + 0.2*h*h*h*h*h)*vec3(0.6,0.2,1.0);
+  sky += (g*g*g*g*0.8 + 0.2*h*h*h*h*h)*NL_END_STREAK;
 
   return sky;
 }
@@ -205,8 +205,8 @@ vec3 nlRenderSky(nl_skycolor skycol, nl_environment env, vec3 viewDir, vec3 FOG_
         float a = atan2(viewDir.x, viewDir.z);
         float grad = 0.5 + 0.5 * viewDir.y;
         grad = pow(grad, 6.0);
-        float spread = (0.2 + 0.8 * sin(16.0 * a + 0.4 * t + 3.0 * sin(20.0 * a - 0.6 * t)));
-        spread *= (0.2 + 0.8 * sin(12.0 * a - sin(0.9 * t))) * grad;
+        float spread = (0.5 + 0.5 * sin(9.0 * a + 0.2 * t + 2.0 * sin(5.0 * a - 0.4 * t)));
+        spread *= (0.5 + 0.5 * sin(6.0 * a - sin(0.5 * t))) * grad;
         spread += (1.0 - spread) * grad;
         float streaks = spread * spread;
         streaks *= streaks;

@@ -52,7 +52,8 @@ float cloudDf(vec3 pos, float rain, vec2 boxiness) {
   // round y
   n *= 1.0 - 1.5*smoothstep(boxiness.y, 2.0 - boxiness.y, 2.0*abs(pos.y-0.5));
 
-  n = max(1.25*(n-0.2), 0.0); // smoothstep(0.2, 1.0, n)
+  n = max(1.26*(n-0.2), 0.0);
+  //n = smoothstep(0.2, 1.0, n);
   n *= n*(3.0 - 2.0*n);
   return n;
 }
@@ -62,50 +63,56 @@ vec4 renderCloudsRounded(
     const int steps, const float thickness, const float thickness_rain, const float speed,
     const vec2 scale, const float density, const vec2 boxiness
 ) {
-  float height = 7.0 * mix(thickness, thickness_rain, rain);
+  float height = 7.0*mix(thickness, thickness_rain, rain);
   float stepsf = float(steps);
 
   // scaled offset ray
   vec3 deltaP;
   deltaP.y = 1.0;
-  deltaP.xz = height * scale * vDir.xz / (0.02 + 0.98 * abs(vDir.y));
+  deltaP.xz = height*scale*vDir.xz/(0.02 + 0.98*abs(vDir.y));
 
   // local cloud pos
   vec3 pos;
   pos.y = 0.0;
-  pos.xz = scale * (vPos.xz + vec2(1.0, 0.5) * (time * speed));
+  pos.xz = scale*(vPos.xz + vec2(1.0, 0.5)*(time*speed));
   pos += deltaP;
 
   deltaP /= -stepsf;
 
+  // alpha, gradient
   vec2 d = vec2(0.0, 1.0);
   for (int i = 1; i <= steps; i++) {
     float m = cloudDf(pos, rain, boxiness);
+
     d.x += m;
     d.y = mix(d.y, pos.y, m);
+
     pos += deltaP;
   }
 
-  d.x *= smoothstep(0.12, 0.14, d.x);
-  d.x /= (stepsf / density) + d.x;
+  d.x *= smoothstep(1.0, 1.0, d.x);
+  d.x /= (stepsf/density) + d.x;
 
-  if (vPos.y < 0.0) { // view from top
+  if (vPos.y > 0.0) { // view from bottom
     d.y = 1.0 - d.y;
   }
 
-  // experimental
-  float night = max(1.1 - 3.0 * max(horizonCol.b, horizonCol.g), 0.0);
-  // float dusk = max(0.0, max(horizonCol.r, horizonCol.g) - 0.5);
+  d.y = 1.0 - 1.15*d.y*d.y;
 
-  vec4 col = vec4(zenithCol + horizonCol, d.x);
-  col.rgb += dot(col.rgb, vec3(0.3, 0.4, 0.3))*d.y*d.y;
-  col.rgb *= 0.8 - 0.6*rain;
-  col.rgb *= 0.8 - 0.6*night;
+  float night = max(1.0 - 3.0*max(horizonCol.b, horizonCol.g), 0.0);
+  float dusk = smoothstep(0.1, 0.5, max(horizonCol.r - horizonCol.b, 0.0) * max(horizonCol.r - horizonCol.g * 0.5, 0.0));
 
-  //if (dusk > 0.0) {
-  //  vec3 duskColor = vec3(0.8, 0.2, 0.4);
-  //  col.rgb = mix(col.rgb, duskColor, dusk);
-  //}
+  vec4 col = vec4(0.6*zenithCol, d.x);
+  col.rgb += (zenithCol + 0.929*horizonCol)*d.y;
+  col.rgb *= 1.0 - 0.6*rain;
+  col.rgb *= 1.0 - 0.8*night;
+
+  /* need fixing
+  if (dusk > 0.0) {
+  	col.rgb += mix(zenithCol, vec3(1.0, 0.4, 0.1), 1.0);
+  	col.rgb *= 1.0 - 0.6*dusk;
+  }
+  */
 
   return col;
 }
@@ -152,31 +159,21 @@ vec4 renderClouds(vec2 p, float t, float rain, vec3 horizonCol, vec3 zenithCol, 
   return col;
 }
 
-// Aurora is rendered on clouds layer
+// aurora is rendered on clouds layer
 #ifdef NL_AURORA
 vec4 renderAurora(vec3 p, float t, float rain, vec3 FOG_COLOR) {
   t *= NL_AURORA_VELOCITY;
   p.xz *= NL_AURORA_SCALE;
-  p.xz += 0.03*sin(p.x*4.0 + 30.0*t);
+  p.xz += 0.05*sin(p.x*4.0 + 20.0*t);
 
-  float d0 = sin(p.x*0.1 + t + sin(p.z*0.1));
+  float d0 = sin(p.x*0.1 + t + sin(p.z*0.2));
   float d1 = sin(p.z*0.1 - t + sin(p.x*0.2));
-  float d2 = cos(p.z*0.1 + 1.0*sin(d0 + d1*2.0) + d1*2.0 + d0*1.0);
-  float d3 = cos(p.z*0.2 + 1.0*cos(d0 + d2*2.0) + d1*2.0 + d0*1.0);
-  d0 *= d0; d1 *= d1; d2 *= d2; d3 *= d3;
+  float d2 = sin(p.z*0.1 + 1.0*sin(d0 + d1*2.0) + d1*2.0 + d0*1.0);
+  d0 *= d0; d1 *= d1; d2 *= d2;
   d2 = d0/(1.0 + d2/NL_AURORA_WIDTH);
 
-  vec3 auroraColor = mix(NL_AURORA_COL1, NL_AURORA_COL2, d1);
-  auroraColor = mix(auroraColor, NL_AURORA_COL1 * vec3(0.6, 0.8, 1.2), d3);
-
-  // average luminance
-  float lumi = dot(auroraColor, NL_AURORA_COL1);
-  auroraColor = mix(vec3(lumi, lumi, lumi), auroraColor, 1.0);
-
-  float mask = (1.0-0.8 * rain) * max(1.0-4.0 * max(FOG_COLOR.b, FOG_COLOR.g), 0.0);
-  auroraColor *= NL_AURORA;
-
-  return vec4(auroraColor, 1.0) * d2 * mask;
+  float mask = (1.0-0.8*rain)*max(1.0 - 4.0*max(FOG_COLOR.b, FOG_COLOR.g), 0.0);
+  return vec4(NL_AURORA*mix(NL_AURORA_COL1,NL_AURORA_COL2,d1),1.0)*d2*mask;
 }
 #endif
 

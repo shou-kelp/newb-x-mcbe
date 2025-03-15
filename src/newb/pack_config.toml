@@ -1,5 +1,5 @@
 name = "§lNewb §6Pineapple§r"
-version = [0, 4, 4]
+version = [0, 5, 0]
 min_supported_mc_version = [1, 21, 20]
 description = '''
 §7Another newb variants to improve your minecraft visual with bright lighting, low saturation, soft shadow, foggy environment and immersive bloom.§r

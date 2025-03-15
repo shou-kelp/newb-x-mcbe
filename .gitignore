@@ -8,6 +8,7 @@ tool/__pycache__/
 venv
 
 # ignore files
+config_backup.h
 note.txt
 copy.sh
 *.bin
