@@ -31,8 +31,8 @@
 /* Color correction */
 // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
 #define NL_TONEMAP_TYPE 4
-#define NL_GAMMA        1.6
-#define NL_EXPOSURE     1.47
+#define NL_GAMMA        1.12
+#define NL_EXPOSURE     1.4
 #define NL_SATURATION   1.015
 // color tint
 //#define NL_TINT         vec3(1.0,0.75,0.5)
@@ -71,21 +71,21 @@
 //#define NL_CLOUDY_FOG           0.42    // [toggle] 0.0 subtle - 0.8 dense fog clouds
 
 /* Sky colors - zenith=top, horizon=bottom */
-#define NL_DAY_ZENITH_COL       vec3(0.202, 0.374, 1.000)
-#define NL_DAY_HORIZON_COL      vec3(0.790, 0.880, 1.000)
-#define NL_NIGHT_ZENITH_COL     vec3(0.000, 0.000, 0.005)
-#define NL_NIGHT_HORIZON_COL    vec3(0.017, 0.080, 0.160)
-#define NL_DAWN_ZENITH_COL      vec3(0.042, 0.037, 0.073)
-#define NL_DAWN_HORIZON_COL     vec3(0.900, 0.233, 0.047)
-#define NL_DAWN_EDGE_COL        vec3(0.380, 0.085, 0.100)
-#define NL_RAIN_ZENITH_COL      vec3(0.180, 0.200, 0.240)
-#define NL_RAIN_HORIZON_COL     vec3(0.160, 0.190, 0.240)
+#define NL_DAY_ZENITH_COL       vec3(0.320, 0.484, 1.000)
+#define NL_DAY_HORIZON_COL      vec3(0.785, 0.880, 1.000)
+#define NL_NIGHT_ZENITH_COL     vec3(0.001, 0.000, 0.010)
+#define NL_NIGHT_HORIZON_COL    vec3(0.050, 0.110, 0.200)
+#define NL_DAWN_ZENITH_COL      vec3(0.120, 0.100, 0.160)
+#define NL_DAWN_HORIZON_COL     vec3(1.000, 0.350, 0.080)
+#define NL_DAWN_EDGE_COL        vec3(0.500, 0.115, 0.140)
+#define NL_RAIN_ZENITH_COL      vec3(0.280, 0.300, 0.340)
+#define NL_RAIN_HORIZON_COL     vec3(0.360, 0.410, 0.480)
 
 /* The end sky */
 #define NL_END_SKY_TYPE    1
-#define NL_END_ZENITH_COL  vec3(0.005, 0.002, 0.010)
-#define NL_END_HORIZON_COL vec3(0.034, 0.020, 0.060)
-#define NL_END_STREAK      vec3(0.400, 0.000, 0.800)
+#define NL_END_ZENITH_COL  vec3(0.040, 0.020, 0.060)
+#define NL_END_HORIZON_COL vec3(0.160, 0.080, 0.340)
+#define NL_END_STREAK      vec3(0.600, 0.200, 1.000)
 
 /* Blackhole in the end sky */
 #define NL_BLACKHOLE    // [toggle] blackhole in the end sky
@@ -216,7 +216,7 @@
 #define NL_FORCE_ONLY_END_REFL         // [toggle] force reflection only appear at the end
 
 /* Entity (Actor, ItemInHand) */
-#define NL_ENTITY_BRIGHTNESS     0.67    // 0.1 dark ~ 1.6 bright
+#define NL_ENTITY_BRIGHTNESS     0.90    // 0.1 dark ~ 1.6 bright
 #define NL_ENTITY_EDGE_HIGHLIGHT 0.01    // 0.0 no highlight ~ 1.6 bright highlight
 
 /* Weather particles */
